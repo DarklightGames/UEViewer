@@ -30,7 +30,7 @@ jobs:
     - name: Download vc32tools
       run: |
         git clone https://github.com/gildor2/BuildTools.git
-        export PATH="$PATH:$(pwd)/BuildTools/bin"
+        $env:PATH += ";$($pwd.Path)/BuildTools/vc32tools"
     - name: Build the project
       run: |
         sh build.sh
