@@ -29,10 +29,8 @@ jobs:
           mingw-w64-x86_64-ncurses
     - name: Download vc32tools
       run: |
-        curl https://raw.githubusercontent.com/gildor2/BuildTools/refs/heads/master/bin/vc32tools -o vc32tools
-        curl https://raw.githubusercontent.com/gildor2/BuildTools/refs/heads/master/bin/vcfilt -o vcfilt
-        chmod +x vc32tools
-        chmod +x vcfilt
+        git clone https://github.com/gildor2/BuildTools.git
+        export PATH="$PATH:$(pwd)/BuildTools/bin"
     - name: Build the project
       run: |
         sh build.sh
