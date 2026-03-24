@@ -30,7 +30,9 @@ jobs:
     - name: Download vc32tools
       run: |
         curl https://raw.githubusercontent.com/gildor2/BuildTools/refs/heads/master/bin/vc32tools -o vc32tools
+        curl https://raw.githubusercontent.com/gildor2/BuildTools/refs/heads/master/bin/vcfilt -o vcfilt
         chmod +x vc32tools
+        chmod +x vcfilt
     - name: Build the project
       run: |
         sh build.sh
