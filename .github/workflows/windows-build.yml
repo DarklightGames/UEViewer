@@ -38,5 +38,5 @@ jobs:
     - name: Add artifact
       uses: actions/upload-artifact@v4
       with:
-        name: umodel-windows
+        name: umodel-windows-${{ github.sha }}
         path: umodel.exe
