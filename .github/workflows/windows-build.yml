@@ -12,21 +12,21 @@ jobs:
       uses: actions/checkout@v4
       with:
         ref: ${{ github.event.pull_request.head.sha }}
-    - name: Set up MSYS2 MinGW-W64
-      uses: msys2/setup-msys2@v2
-      with:
-        msystem: mingw64
-        update: false
-        install: >-
-          mingw-w64-x86_64-toolchain
-          mingw-w64-x86_64-autotools
-          mingw-w64-x86_64-curl
-          mingw-w64-x86_64-libdeflate
-          mingw-w64-x86_64-tools-git
-          mingw-w64-x86_64-zlib
-          mingw-w64-x86_64-bzip2
-          mingw-w64-x86_64-xz
-          mingw-w64-x86_64-ncurses
+    # - name: Set up MSYS2 MinGW-W64
+    #   uses: msys2/setup-msys2@v2
+    #   with:
+    #     msystem: mingw64
+    #     update: false
+    #     install: >-
+    #       mingw-w64-x86_64-toolchain
+    #       mingw-w64-x86_64-autotools
+    #       mingw-w64-x86_64-curl
+    #       mingw-w64-x86_64-libdeflate
+    #       mingw-w64-x86_64-tools-git
+    #       mingw-w64-x86_64-zlib
+    #       mingw-w64-x86_64-bzip2
+    #       mingw-w64-x86_64-xz
+    #       mingw-w64-x86_64-ncurses
     - name: Download vc32tools
       run: |
         git clone https://github.com/gildor2/BuildTools.git
@@ -34,3 +34,9 @@ jobs:
       run: |
         $env:PATH += ";$($pwd.Path)/BuildTools/bin"
         sh build.sh
+    # Upload the build artifact (umodel.exe)
+    - name: Add artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: umodel-windows
+        path: umodel.exe
