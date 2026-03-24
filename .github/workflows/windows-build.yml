@@ -27,6 +27,10 @@ jobs:
           mingw-w64-x86_64-bzip2
           mingw-w64-x86_64-xz
           mingw-w64-x86_64-ncurses
+    - name: Download vc32tools
+      run: |
+        curl https://raw.githubusercontent.com/gildor2/BuildTools/refs/heads/master/bin/vc32tools -o vc32tools
+        chmod +x vc32tools
     - name: Build the project
       run: |
         sh build.sh
