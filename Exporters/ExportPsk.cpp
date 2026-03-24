@@ -100,7 +100,10 @@ static void ExportCommonMeshData
 		for (CVec3& V : Share.Points)
 			V[1] = -V[1]; // V.Y
 #endif
-		Ar.Serialize(Share.Points.GetData(), Share.Points.Num() * sizeof(CVec3));
+		if (Share.Points.Num())
+		{
+			Ar.Serialize(Share.Points.GetData(), Share.Points.Num() * sizeof(CVec3));
+		}
 	}
 	else
 	{
